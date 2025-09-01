@@ -1,0 +1,1363 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+/* Loading animation styles */
+#loading-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.spinner {
+  
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  
+}
+nav{
+  display: flex;
+  padding: 20px;
+  width: 100%;
+  height: 80px;
+  background-color:white;
+  position: fixed;
+  top:0;
+  left:0;
+  z-index: 10000;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+nav .sticky
+{
+  padding: 10px 45px;
+  background:#071952;
+  height:35px;
+
+}
+.logo{
+  color: black;
+  cursor: pointer;
+  margin-left: 60px;
+  font-size: xx-large;
+  font-weight: bold;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin-right: 10px;
+}
+.navbtn{
+  height: 30px;
+  border: 1px solid black;
+  border-radius: 4px;
+  gap : 20px;
+
+}
+nav ul{
+  margin-top: 15px;
+  margin-left: 170px;
+  display: flex;
+  gap: 30px;
+}
+.user-icon{
+  display: flex;
+}
+nav ul li{
+  list-style-type: none;
+}
+nav ul li img{
+  gap : 5px;
+  width: 25px;
+  height: 25px;
+}
+nav ul li a{
+  text-decoration: none;
+  color: black;
+  font-weight: 900;
+  font-size: large;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+nav ul li a:hover{
+  border-bottom: #5c6bc0 solid 3px;
+  transition: 0.s;
+}
+.menu-icon{
+  display: none;
+}
+
+.menu-icon i{
+  color: black;
+  font-size: 30px;
+}
+
+@media (max-width:600px) {
+  nav ul{
+      position: absolute;
+      top: 70px;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      text-align: center;
+      background: white;
+      gap: 0;
+      overflow: hidden;
+      width: 250px;
+  }
+  nav ul li{
+      padding: 20px;
+      padding-top: 0;
+  }
+  .menu-icon{
+      display: block;
+      margin-top: 12px;
+      margin-left: 150px;
+      cursor: pointer;
+  }
+  #menuList{
+      transition: all 0.5s;
+  }
+}
+/*header {
+  display: flex;
+  padding: 20px;
+  width: 100%;
+  height: 80px;
+  background-color:white;
+  position: fixed;
+  top:0;
+  left:0;
+  z-index: 10000;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+header.sticky
+{
+  padding: 10px 45px;
+  background:#071952;
+  height:35px;
+
+}
+
+.logo {
+  cursor: pointer;
+  
+  margin-left: 60px;
+  font-size: xx-large;
+  font-weight: bold;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+nav ul {
+  margin-top: 15px;
+  margin-left: 900px;
+  display: flex;
+  gap: 20px;
+}
+
+nav ul li {
+  list-style: none;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: black;
+  font-weight: 900;
+  font-size: large;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+nav li:hover{
+  border-bottom: #5c6bc0 solid 3px;
+  transition: 0.s;
+}
+*/
+.hero-carousel {
+  position: relative;
+  width: 100%;
+  height: 700px; /* Adjust height as needed */
+  overflow: hidden;
+  margin-top: 100px;
+}
+.carousel-image {
+  margin-left: 5%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  border-radius: 5px;
+  box-shadow: 0 12px 14px rgba(0, 0, 0, 0.1);
+  
+}
+
+.carousel-image.active {
+  opacity: 1;
+}
+
+/* Popup Container */
+.popup-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Popup Content */
+.popup-content {
+  background-color: #fff;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  text-align: center;
+  position: relative;
+  animation: popup-fade-in 0.3s ease-out;
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Popup Form */
+.popup-form input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.popup-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.popup-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Popup Animation */
+@keyframes popup-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+/* Search bar positioning */
+.search-bar-container {
+  position: absolute;
+  margin-top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  
+}
+.search-bar-container select, 
+.search-bar-container input, 
+.search-bar-container button {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  background-color: white;
+  font-family: Arial, sans-serif;
+}
+
+.search-bar-container select {
+  appearance: none; /* Removes default styling */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23333333" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5H7z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+  cursor: pointer;
+}
+
+.search-bar-container select:focus {
+  outline: none;
+  border-color: #6C63FF;
+  box-shadow: 0 0 5px rgba(108, 99, 255, 0.5);
+}
+
+.datepicker{
+  width: 200px;
+}
+
+.search-bar-container .form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-bar-container label {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.search-bar-container input {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+.search-bar-container button {
+  background-color: #6C63FF;
+  color: white;
+  border: none;
+  
+  padding: 12px 20px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.search-bar-container button:hover {
+  background-color: #5a53d4;
+}
+/* Responsive Design */
+
+/* Medium Screens (Tablets) */
+@media (max-width: 1024px) {
+  .search-bar-container {
+    width: 90%; /* Increase width to take more space on tablets */
+    flex-direction: column; /* Stack the elements vertically */
+    gap: 15px; /* Adjust gap between elements */
+    
+  }
+  .datepicker{
+    width: 100%;
+  }
+  .search-bar-container select, 
+  .search-bar-container input, 
+  .search-bar-container input[type="date"], /* Target date input specifically */
+  .search-bar-container button {
+    width: 100%; /* Make each input element take full width */
+  }
+}
+
+/* Small Screens (Phones) */
+@media (max-width: 768px) {
+  .search-bar-container {
+    margin-top: -30px;
+    width: 60%; 
+    margin-bottom: 500px;
+    overflow: visible;
+  }
+
+  .search-bar-container select, 
+  .search-bar-container input, 
+  .search-bar-container input[type="date"], /* Target date input specifically */
+  .search-bar-container button {
+    width: 100%; /* Full width for input elements */
+    padding: 10px; /* Adjust padding for easier touch targets */
+  }
+
+  .search-bar-container button {
+    padding: 15px 20px; /* Slightly larger button on smaller screens */
+  }
+}
+
+/* Extra Small Screens (Mobile Portrait) */
+@media (max-width: 480px) {
+  .search-bar-container {
+    width: 100%; /* Full width on very small screens */
+    margin-top: -20px; /* Adjust margin for better appearance */
+    margin-bottom: 500px;
+  }
+
+  .search-bar-container select, 
+  .search-bar-container input, 
+  .search-bar-container input[type="date"], /* Target date input specifically */
+  .search-bar-container button {
+    width: 100%; /* Ensure all elements take full width */
+    font-size: 0.85rem; /* Slightly smaller font for smaller screens */
+  }
+
+  .search-bar-container button {
+    padding: 15px 25px; /* Larger padding on button for easy tapping */
+  }
+}
+
+
+
+/* Shared Styles for Hotels, Resorts, and Villas */
+.hotels-container, .resorts-container, .villas-container {
+  align-items: center;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 20px;
+  flex-wrap: wrap;
+  animation: bounceIn 1s ease-in;
+}
+@keyframes bounceIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  50% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+.hotel-title{
+  text-shadow: 2px 2px 4px rgba(189, 178, 178, 0.5);
+  font-family: "Kanit", sans-serif;
+  margin-top: 70px;
+  letter-spacing: 2px;
+  font-size:40px;
+  color:black;
+  font-weight:500;
+  margin-left: 100px;
+  align-items: center;
+  text-align: center;
+}
+.resort-title, .villa-title{
+  text-shadow: 2px 2px 4px rgba(189, 178, 178, 0.5);
+  font-family: "Kanit", sans-serif;
+  margin-top: 5px;
+  letter-spacing: 2px;
+  font-size:40px;
+  color:black;
+  font-weight:500;
+  margin-left: 100px;
+  align-items: center;
+  text-align: center;
+}
+.hotel-card, .resort-card, .villa-card {
+  width: 300px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hotel-card img, .resort-card img, .villa-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.hotel-info, .resort-info, .villa-info {
+  padding: 15px;
+  text-align: center;
+}
+
+.hotel-btn, .resort-btn, .villa-btn {
+  background-color: #6C63FF;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin-top: 12px;
+}
+.hotel-card:hover {
+  transform: rotateY(10deg) scale(1.05);
+  transition: transform 0.5s ease-in-out; /* Zoom-in effect */
+  animation: fadeIn 1s ease-in;
+}
+.resort-card:hover{
+  transform: translateX(-10px) scale(1.05);
+  transition: transform 0.5s ease-in-out;
+  animation: fadeIn 1s ease-in;
+}
+.villa-card:hover{
+  animation: fadeIn 1s ease-in;
+}
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes rotateZoomIn {
+  from { transform: rotate(-360deg) scale(0.5); opacity: 0; }
+  to { transform: rotate(0) scale(1); opacity: 1; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@media (max-width: 1024px) {
+  .hotel-card, .resort-card, .villa-card {
+    width: 45%; 
+  }
+
+  .hotel-title, .resort-title, .villa-title {
+    font-size: 35px;
+    margin-left: 50px; 
+  }
+
+  .hotels-container, .resorts-container, .villas-container {
+    gap: 20px; 
+  }
+}
+
+/* Small Screens (Phones) */
+@media (max-width: 768px) {
+  .hotel-title{
+    margin-top: 540px;
+  }
+  .hotel-card, .resort-card, .villa-card {
+  
+    width: 60%; 
+    margin-bottom: 20px; 
+  }
+
+  .hotel-title, .resort-title, .villa-title {
+    
+    font-size: 28px; 
+    margin-left: 20px; 
+  }
+
+  .hotels-container, .resorts-container, .villas-container {
+    gap: 15px; 
+    padding: 10px; 
+  }
+}
+
+/* Extra Small Screens (Mobile Portrait) */
+@media (max-width: 480px) {
+  .hotel-title, .resort-title, .villa-title {
+    font-size: 24px; 
+    margin-left: 10px; 
+  }
+
+  .hotel-card, .resort-card, .villa-card {
+    width: 80%; /* Cards take full width */
+  }
+
+  .hotel-btn, .resort-btn, .villa-btn {
+    padding: 12px 18px; /* Slightly larger buttons for easier touch */
+  }
+
+  .hotels-container, .resorts-container, .villas-container {
+    gap: 10px; /* Tighten up the gap between cards */
+    padding: 5px; /* Minimal padding for small screens */
+  }
+}
+
+/*TESTIMONIALS*/
+
+.testimonials-section {
+  margin-top: 350px;
+  text-align: center;
+  padding: 50px 0;
+  overflow: hidden;
+}
+.testimonials-section h2{
+  text-shadow: 2px 2px 4px rgba(189, 178, 178, 0.5);
+  font-family: "Kanit", sans-serif;
+  margin-top: 5px;
+  letter-spacing: 2px;
+  font-size:40px;
+  color:black;
+  font-weight:500;
+  margin-left: 100px;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.testimonial-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.testimonial-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  padding: 20px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.user-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-name {
+  font-weight: bold;
+}
+
+.testimonial-text {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.rating {
+  color: #ffcc00;
+  font-size: 18px;
+}
+
+/* Slanted effect */
+.testimonial-card.left {
+  transform: rotate(-7deg);
+}
+
+.testimonial-card.center {
+  transform: rotate(0deg);
+}
+
+.testimonial-card.right {
+  transform: rotate(7deg);
+}
+
+
+
+/*room-title*/
+.room-title{
+  height:30px;
+  width: 1350px;
+  margin-top: 75px; 
+  margin-left: -450px;
+}
+.room-title h1 {
+  color : black;
+  height:60px;
+  width:100%;
+  font-size: 30px;
+  font-weight: 700;
+  font-family:"Parkinsans", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.shadow{
+  
+  text-shadow: 2px 2px 4px rgba(189, 178, 178, 0.5);
+  font-family: "Kanit", sans-serif;
+  margin-top: 20px;
+  letter-spacing: 2px;
+  font-size:40px;
+  color:black;
+  font-weight:500;
+  margin-bottom: 65px;
+  margin-left: 100px;
+  align-items: center;
+  text-align: center;
+  
+}
+/*room accmodation*/
+
+
+.room-card{
+  height: 450px;
+  width:1248px;
+  background-color: #fafafa;
+  padding:1rem 3rem;
+  font-family: 'poppins', sans-serif;
+  display: flex;
+  justify-content:center;
+  gap:90px;
+  border: 1 solid black;
+  margin-top: -110px;
+  margin-left: 350px;
+  align-items: center;
+  box-shadow: 0 12px 14px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+.card{
+  height:350px;
+  width:550px;
+  padding:2rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position:relative;
+}
+.card img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  position: absolute;
+}
+.card:hover{
+  transform: translateY(-10px);
+}
+.card::before{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  opacity: 0;
+  transition: 0.5s all;
+  background: linear-gradient(to bottom,rgba(13,36,63,0.3),rgba(13,36,63,1));
+}
+.card:hover::before{
+  opacity: 1;
+}
+.card .info{
+  position: relative;
+  color: #fff;
+  z-index: 3;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 0.5s all;
+}
+.card:hover .info{
+  opacity: 1;
+  transform: translateY(0);
+}
+.card .info h1{
+  line-height: 40px;
+  margin-bottom: 10px;  
+}
+.card .info p{
+  font-size: 15px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  margin-top: 75px;
+}
+.card .info .btn {
+	background: #fff;
+	padding: 0.5rem 1rem;
+	color: #000;
+	font-size: 12px;
+	cursor: pointer;
+	border-radius: 20px;
+	text-decoration: none;
+	font-weight: bold;
+	transition: .4s ease-in-out;
+}
+.card .info .btn:hover {
+	background: #fc5185;
+	color: #fff;
+	box-shadow: 0 7px 10px rgba(0, 0, 0, 0.5);
+}
+
+/*---facility------*/
+/* General Styles for Facility Section */
+.facility {
+  height: 450px;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  justify-content: center;
+  margin-left: -310px;
+  align-items: center;
+  padding: 0 20px; /* Added padding for smaller screens */
+  box-sizing: border-box;
+  margin-top: -350px;
+}
+
+/* Headings Styles */
+.fac-head {
+  text-shadow: 2px 2px 4px rgba(189, 178, 178, 0.5);
+  font-family: "Kanit", sans-serif;
+  margin-top: 30px;
+  letter-spacing: 2px;
+  font-size: 40px;
+  color: black;
+  font-weight: 500;
+  margin-bottom: -90px;
+  margin-left: 100px;
+  align-items: center;
+  text-align: center;
+}
+
+/* Facility List Styles */
+.facility ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  top: 260px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1200px;
+  height: 350px;
+  background: #ccc;
+  margin-top: 170px;
+  box-shadow: 0 16px 18px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* List Items Styles */
+.facility ul li {
+  list-style: none;
+  position: relative;
+  width: 20%;
+  height: 100%;
+  box-sizing: border-box;
+  transition: 0.5s;
+  text-align: center;
+  overflow: hidden;
+  background-color: #fafafa;
+  box-shadow: 0 16px 18px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+/* Background images for list items */
+.facility ul li:nth-child(1) {
+  background: url(restaurant.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.facility ul li:nth-child(2) {
+  background: url(pool2.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.facility ul li:nth-child(3) {
+  background: url(gym1.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.facility ul li:nth-child(4) {
+  background: url(bs2.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.facility ul li:nth-child(5) {
+  background: url(club1.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+/* Hover effect for list items */
+.facility ul li:hover {
+  width: 60%;
+}
+
+/* Content inside the list items */
+.facility ul li .content {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  background: rgba(65, 118, 109, 0.698);
+  box-sizing: border-box;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.facility ul li:hover .content {
+  bottom: 0;
+  opacity: 1;
+  transition-delay: 0.2s;
+}
+
+.content p {
+  color: #ecdfcc;
+}
+
+/* Responsive Styles for Smaller Screens */
+@media (max-width: 1200px) {
+  .facility {
+    margin-top: 325px;
+    height: 100px;
+    margin-left: 30px;
+    width: 450px;
+    margin-bottom: 800px;
+  }
+  
+  .fac-head {
+    font-size: 32px;
+    margin-left: 50px;
+    margin-bottom: -70px;
+  }
+
+  .facility ul {
+    flex-direction: column;
+    height: auto;
+    max-width: 100%;
+  }
+
+  .facility ul li {
+    width: 80%;
+    margin-bottom: 20px; /* Added margin for spacing */
+  }
+
+  .facility ul li:hover {
+    width: 100%;
+  }
+
+  .facility ul li .content {
+    padding: 15px;
+  }
+}
+
+/* Mobile Devices (max-width: 768px) */
+@media (max-width: 768px) {
+  .facility {
+    height: 350px;
+  }
+  
+  .fac-head {
+    font-size: 28px;
+    margin-left: 20px;
+  }
+
+  .facility ul {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    margin-top: 50px;
+  }
+
+  .facility ul li {
+    width: 100%;
+    height: 250px;
+  }
+
+  .facility ul li:hover {
+    width: 100%;
+  }
+
+  .facility ul li .content {
+    padding: 20px;
+  }
+}
+
+
+
+/*destination
+.ds-title{
+  margin-top: -50px;
+  
+  text-shadow: 2px 2px 4px rgba(189, 178, 178, 0.5);
+  font-family: "Kanit", sans-serif;
+  letter-spacing: 2px;
+  font-size:30px;
+  color:black;
+  font-weight:400;
+  margin-bottom: 65px;
+  margin-left: 100px;
+}*/
+
+
+/*-----services------*/
+.service-title {
+  
+  text-shadow: 2px 2px 4px rgba(189, 178, 178, 0.5);
+  font-family: "Kanit", sans-serif;
+  margin-top: 50px;
+  letter-spacing: 2px;
+  font-size:40px;
+  color:black;
+  font-weight:500;
+  margin-bottom: 65px;
+  margin-left: 100px;
+  align-items: center;
+  text-align: center;
+}
+.ser-title{
+  padding: 15px;
+  margin-top: 65px;
+}
+.services{
+  margin-top: 50px;
+  height:425px;
+  border-radius: 10px;
+  margin-left: 8px;
+}
+.img-container{
+  display: flex;
+  justify-content:space-evenly;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+  margin-left: -58px;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+}
+.wifi img{
+  border-radius: 50%;
+  border:1px solid black;
+  object-fit: cover;
+  position:absolute;
+  overflow: hidden;
+  height:100px;
+  width: 100px;
+  margin-top: 10px;
+}
+.wifi p{
+  font-size:20px;
+	color:navy;
+	font-family: Arial;
+	margin-top:120px;
+  margin-left: 105px;
+  text-align: center;
+}
+.wifi img{
+  object-fit: cover;
+  transition: transform 0.8s;
+}
+.wifi:hover img{
+  transform: scale(0.5);
+  transition-delay:0.2s;
+  opacity: 1;
+}
+/* Small Screens (Phones) */
+@media (max-width: 768px) {
+  .services{
+    margin-bottom: 210px;
+  }
+  .img-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns layout on small screens */
+  }
+  .wifi img {
+    width: 80px;
+    height: 80px;
+  }
+  .wifi p {
+    font-size: 18px;
+    margin-top: 100px; /* Adjust text position for smaller screens */
+  }
+}
+
+/* Extra Small Screens (Mobile Portrait) */
+@media (max-width: 480px) {
+  .img-container {
+    grid-template-columns: 1fr;
+    margin-bottom: 500px; /* Single column layout on very small screens */
+  }
+  .wifi img {
+    width: 70px;
+    height: 70px;
+  }
+  .wifi p {
+    font-size: 16px;
+    margin-top: 80px; /* Adjust text position */
+  }
+}
+
+/* FAQ */ 
+.faq-section {
+  max-width: 800px;
+  margin: 50px auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+.faq-header {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #333;
+}
+.faq-item {
+  border-bottom: 1px solid #ddd;
+  padding: 15px 0;
+}
+.faq-item:last-child {
+  border-bottom: none;
+}
+.faq-question {
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+  color: #007BFF;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.faq-question:hover {
+  text-decoration: underline;
+}
+.faq-answer {
+  margin-top: 10px;
+  display: none;
+  font-size: 1em;
+  color: #555;
+}
+.faq-question::after {
+  content: '+';
+  font-size: 1.5em;
+  color: #007BFF;
+}
+.faq-question.active::after {
+  content: '-';
+}
+
+
+/*Reach Us*/
+.reach-us-section {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+}
+.reach-us-section h2 {
+  text-shadow: 2px 2px 4px rgba(189, 178, 178, 0.5);
+  font-family: "Kanit", sans-serif;
+  margin-top: 5px;
+  letter-spacing: 2px;
+  font-size:40px;
+  color:black;
+  font-weight:500;
+  margin-left: 100px;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 50px;
+}
+.reach-us-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+.map iframe {
+  width: 100%;
+  height: 400px;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.info-card {
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  align-items: center;
+  
+}
+#social-media text{
+  margin-left: -10px;
+}
+.info-card h3 {
+  margin-bottom: 15px;
+  font-size: 1.25rem;
+  color: #333;
+}
+.info-card p {
+  margin: 10px 0;
+  color: #555;
+  font-size: 1rem;
+}
+.info-card a {
+  display: flex;
+  align-items: center;
+  width: 120px;
+  
+  gap: 10px;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #333;
+  margin-right: 10px;
+  transition: background-color 0.3s;
+}
+.info-card a:hover {
+  
+  color: #fff;
+}
+
+footer {
+  background-color: #FAF9F6;
+  padding: 20px 0;
+  text-shadow: 2px 2px 4px rgba(189, 178, 178, 0.5);
+}
+
+.footer-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 20px 50px;
+}
+
+.footer-content {
+  width: 23%;
+  min-width: 200px;
+}
+.footer-content .links{
+  margin-left: 140px;
+}
+.footer-content h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.footer-content ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-content ul li {
+  margin-bottom: 8px;
+}
+
+.footer-content ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+.footer-content ul li i {
+  margin-right: 8px;
+}
+
+.footer-bottom {
+  background-color: #212121;
+  color: white;
+  text-align: center;
+  padding: 12px 0;
+  font-size: 14px;
+}
+
+/* Responsive Fix */
+@media (max-width: 768px) {
+  .footer-section {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .footer-content {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+
+
+/*Footer
+footer {
+  background-color: #FAF9F6;
+  padding: 20px 0;
+  text-shadow: 2px 2px 4px rgba(189, 178, 178, 0.5);
+}
+
+.footer-section {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px 0;
+}
+
+.footer-content {
+  width: 30%;
+}
+
+.footer-content h3 {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.footer-content ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer-content ul li {
+  margin-bottom: 5px;
+}
+
+.footer-content ul li a {
+  text-decoration: none;
+  color: black;
+}
+.footer-top {
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+}
+.footer-top a{
+  color: black;
+  text-decoration: none;
+  font-size: large;
+}
+.footer-bottom {
+  background-color: #212121;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 14px;
+}*/

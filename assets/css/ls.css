@@ -1,0 +1,86 @@
+.auth-container {
+    width: 600px;
+    margin: 50px auto;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-top: 100px;
+}
+
+.auth-container h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Grid Layout for Two Columns */
+.form-grid {
+    display: flex;
+    gap: 20px;
+}
+
+/* Style each section (left & right) */
+.form-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Label & Input Styling */
+.auth-container label {
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: left;
+    display: block;
+    margin-bottom: 5px;
+    color: #444;
+}
+
+.auth-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.auth-container input:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+    outline: none;
+}
+
+/* Button Styling */
+.auth-container button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(45deg, #007BFF, #0056b3);
+    border: none;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-top: 20px;
+}
+
+.auth-container button:hover {
+    background: linear-gradient(45deg, #0056b3, #003f7f);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.auth-container p{
+    margin-top: 10px;
+    margin-bottom: -10px;
+}
+/* Responsive - Stack on smaller screens */
+@media (max-width: 600px) {
+    .form-grid {
+        flex-direction: column;
+    }
+}
