@@ -1,0 +1,198 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    margin-top: 100px;
+  }
+  .main{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+  }
+  h1 {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .hotel-list, .resort-list, .villa-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 380px;
+    gap: 20px;
+    justify-content: space-around;
+    padding: 20px;
+    margin-top: -354px;
+    height: 100%;
+    width: 90%;
+  }
+  
+  .hotel-item, .resort-item, .villa-item {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+  }
+  
+  .hotel-item img, .resort-item img, .villa-item img {
+    width: 100%;
+    border-radius: 8px;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #6C63FF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  button:hover {
+    background-color: #5a51e5;
+  }
+  .search-bar-container1 {
+    position: relative;
+    margin-top: 5px;
+    margin-left: 200px;
+    transform: translateX(-50%);
+    background-color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 250x;
+    
+  }
+  .search-bar-container1 select, 
+  .search-bar-container1 input, 
+  .search-bar-container1 button {
+    padding: 8px 12px;
+    border: 1px solid white;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    background-color: white;
+    font-family: Arial, sans-serif;
+    margin-bottom: 5px;
+  }
+  
+  .search-bar-container1 select {
+    appearance: none; /* Removes default styling */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23333333" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5H7z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    cursor: pointer;
+  }
+  
+  .search-bar-container1 select:focus {
+    outline: none;
+    border-color: #6C63FF;
+    box-shadow: 0 0 5px rgba(108, 99, 255, 0.5);
+  }
+  
+.loca{
+    margin-bottom: 20px;
+  }
+
+  .search-bar-container1 radio{
+    margin-bottom: 20px;
+    margin-left: 15px;
+  }
+  
+  .search-bar-container1 .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .search-bar-container1 label {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+  
+  .search-bar-container1 input {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95rem;
+  }
+  
+  .search-bar-container1 .btn {
+    background-color: #6C63FF;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .search-bar-container1 .btn:hover {
+    background-color: #5a53d4;
+  }
+  /* Style the Clear button */
+  .clear-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    height: 45px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #d9534f; /* A red color for "Clear" */
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.clear-btn:hover {
+    background-color: #c9302c;
+}
+@media (max-width: 768px) {
+  .search-bar-container1 {
+      flex-direction: column;
+      align-items: stretch; 
+      width: 80%;
+      margin-left: 240px;
+  }
+
+  .hotel-list, .resort-list, .villa-list {
+      flex-direction: column; /* Stack hotels vertically */
+      align-items: center;
+      margin-top: 25px;
+      margin-left: 25px;
+  }
+
+  .hotel-item, .resort-item, .villa-item {
+      width: 100%; /* Full width on smaller screens */
+      max-width: 100%; /* Remove max width limit */
+  }
+
+  button {
+      width: 50%; /* Full width for buttons */
+  }
+}
+
+@media (max-width: 480px) {
+  .search-bar-container1 {
+      padding: 10px;
+      gap: 10px; /* Reduced gap for smaller screens */
+  }
+
+  .hotel-item img, .resort-item img, .villa-item img {
+      margin-top: 500px;
+      width: 100%;
+  }
+}
+
+

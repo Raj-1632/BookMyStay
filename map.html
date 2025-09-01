@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display User Location on Map</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 1000px; /* Set the height of the map */
+            width: 100%;   /* Full width */
+        }
+    </style>
+</head>
+<body>
+    <h2>User's Current Location</h2>
+    <div id="map"></div>
+    <button onclick="fetchCurrentLocation()">Get Current Location</button>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        let map; // Global map variable
+        let marker; // Marker variable
+
+        // Initialize the map
+        function initializeMap(lat, lon) {
+            if (!map) {
+                // Create the map
+                map = L.map('map').setView([lat, lon], 13); // Initial zoom level is 13
+
+                // Add OpenStreetMap tiles
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                    attribution: '© OpenStreetMap contributors'
+                }).addTo(map);
+            } else {
+                // Update the map center
+                map.setView([lat, lon], 13);
+            }
+
+            // Add or update the marker
+            if (marker) {
+                marker.setLatLng([lat, lon]);
+            } else {
+                marker = L.marker([lat, lon]).addTo(map);
+            }
+        }
+
+        // Fetch user's current location
+        async function fetchCurrentLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function (position) {
+                        const latitude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
+
+                        console.log("Coordinates:", latitude, longitude);
+
+                        // Initialize or update the map with the user's location
+                        initializeMap(latitude, longitude);
+                    },
+                    function (error) {
+                        console.error("Geolocation error:", error);
+                        alert("Unable to fetch location. Please enable location services.");
+                    },
+                    { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 }
+                );
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+    </script>
+</body>
+</html>
