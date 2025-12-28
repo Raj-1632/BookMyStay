@@ -36,7 +36,7 @@ Database: MySQL
 
 Prerequisites:
 
-Install XAMPP or MAMP (for local development)
+Install XAMPP or WAMP (for local development)
 
 Install Git (for version control)
 
@@ -79,3 +79,4 @@ Admins can manage all bookings & users from the admin panel.
 Admin Log in Credentials Username : raj password: 1632
 
 Manager Log in Credentials property id : (enter propert id of hotel, resort or villa ) password: 1632 (same for all)
+
