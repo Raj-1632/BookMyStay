@@ -100,8 +100,8 @@ if (isset($_GET['booking_id']) || isset($_GET['villa_id'])) {
             }
 
             // Razorpay Order Creation
-            $apiKey = 'rzp_test_LWmY7qihZ255G1';
-            $apiSecret = 'LvudH59jJCQBC389xoS5zAOW';
+            $apiKey = 'Your Razorpay API Key';
+            $apiSecret = 'API Key Secret';
 
             $ch = curl_init();
             curl_setopt_array($ch, [
@@ -314,3 +314,4 @@ if (isset($_GET['booking_id']) || isset($_GET['villa_id'])) {
 include 'includes/footer.php';
 $conn->close();
 ?>
+
