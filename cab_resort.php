@@ -115,7 +115,7 @@
                 const lng = position.coords.longitude;
 
                 // Use OpenCage API to get the address from coordinates
-                const apiKey = '750867c0779f417aaa51c92f2340d4c4';
+                const apiKey = 'Your OpenCage API Key';
                 const url = `https://api.opencagedata.com/geocode/v1/json?q=${lat}+${lng}&key=${apiKey}`;
                 
                 fetch(url)
@@ -140,4 +140,5 @@
         }
     }
 </script>
+
 
